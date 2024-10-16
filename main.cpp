@@ -45,7 +45,7 @@
   void v_cercano(int px, int py, int pz, std::string nombreObjeto);
   void v_cercano(int px, int py, int pz);
   void v_cercanos_caja(std::string nombreObjeto);
-  ResultadoVertice v_cercano_con_resultado(int px, int py, int pz, std::string nombre_objeto); 
+  RVertice v_cercano_con_resultado(int px, int py, int pz, std::string nombre_objeto); 
 
 
   ///////////////////////////////////////////////COMPONENTE 3//////////////////////////////////////////
