@@ -65,4 +65,3 @@
     unsigned int Arista::contarVertices(std::list<Vertice> lista) {
         return lista.size();
     }
-    
