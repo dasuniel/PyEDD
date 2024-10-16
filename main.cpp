@@ -1101,7 +1101,7 @@ void v_cercano(int px, int py, int pz) {
     }
 }
 //funcion v_cercano_ que retorna un vertice y una distancia asociada a un punto 
-ResultadoVertice v_cercano_con_resultado(int px, int py, int pz, std::string nombre_objeto) {
+RVertice v_cercano_con_resultado(int px, int py, int pz, std::string nombre_objeto) {
     // Verificar si el objeto existe en memoria recorriendo la lista manualmente
     std::list<Objeto>::iterator itObj;
     bool objetoEncontrado = false;
@@ -1117,7 +1117,7 @@ ResultadoVertice v_cercano_con_resultado(int px, int py, int pz, std::string nom
     if (!objetoEncontrado) {
         // El objeto no fue encontrado
         std::cerr << "El objeto " << nombre_objeto << " no ha sido cargado en memoria." << std::endl;
-        return ResultadoVertice(Vertice(), 0.0); // Retornar un ResultadoVertice vacío
+        return RVertice(Vertice(), 0.0); // Retornar un ResultadoVertice vacío
     }
 
     // Crear un Kd-Tree para almacenar los vértices del objeto en 3D
@@ -1156,9 +1156,9 @@ ResultadoVertice v_cercano_con_resultado(int px, int py, int pz, std::string nom
 
         // Crear un vértice con las coordenadas del vértice más cercano
         Vertice v_cercano(vertice_cercano->punto[0], vertice_cercano->punto[1], vertice_cercano->punto[2]);
-        return ResultadoVertice(v_cercano, distancia); // Retornar el resultado
+        return RVertice(v_cercano, distancia); // Retornar el resultado
     } else {
-        return ResultadoVertice(Vertice(), 0.0); // Retornar un ResultadoVertice vacío si no se encuentra un vértice
+        return RVertice(Vertice(), 0.0); // Retornar un ResultadoVertice vacío si no se encuentra un vértice
     }
 }
 
@@ -1191,7 +1191,7 @@ void v_cercanos_caja(std::string nombreObjeto) {
 
         // Llamar a v_cercano_con_resultado y capturar el vértice cercano y la distancia
         double distancia;
-        ResultadoVertice vertice_cercano = v_cercano_con_resultado(esquina.obtenerX(), esquina.obtenerY(), esquina.obtenerZ(), nombreObjeto); 
+        RVertice vertice_cercano = v_cercano_con_resultado(esquina.obtenerX(), esquina.obtenerY(), esquina.obtenerZ(), nombreObjeto); 
         
         // Imprimir el resultado en el formato requerido
         std::cout << (i + 1) << " (" 
