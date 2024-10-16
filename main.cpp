@@ -8,7 +8,7 @@
   #include <cmath>
   #include "Objeto.h" // TAD objeto
   #include "Kdtree.hxx" //TAD KDTREE
-  #include "ResultadoVertice.cpp" //TAD RESULTADO VERTICE (Vertice cercano y una distancia asociada)
+  #include "RVertice.cpp" //TAD RESULTADO VERTICE (Vertice cercano y una distancia asociada)
 
   ///////////////////////////////////////////////COMPONENTE 1//////////////////////////////////////////
   /*Funciones encargadas de subir un objeto a memoria,
