@@ -1,5 +1,4 @@
-
-  #include <iostream>
+ #include <iostream>
   #include <fstream>
   #include <sstream>
   #include <string>
@@ -8,7 +7,7 @@
   #include <cmath>
   #include "Objeto.h" // TAD objeto
   #include "Kdtree.hxx" //TAD KDTREE
-  #include "RVertice.cpp" //TAD RESULTADO VERTICE (Vertice cercano y una distancia asociada)
+  #include "ResultadoVertice.cpp" //TAD RESULTADO VERTICE (Vertice cercano y una distancia asociada)
 
   ///////////////////////////////////////////////COMPONENTE 1//////////////////////////////////////////
   /*Funciones encargadas de subir un objeto a memoria,
@@ -45,7 +44,7 @@
   void v_cercano(int px, int py, int pz, std::string nombreObjeto);
   void v_cercano(int px, int py, int pz);
   void v_cercanos_caja(std::string nombreObjeto);
-  RVertice v_cercano_con_resultado(int px, int py, int pz, std::string nombre_objeto); 
+  ResultadoVertice v_cercano_con_resultado(int px, int py, int pz, std::string nombre_objeto); 
 
 
   ///////////////////////////////////////////////COMPONENTE 3//////////////////////////////////////////
@@ -1101,7 +1100,7 @@ void v_cercano(int px, int py, int pz) {
     }
 }
 //funcion v_cercano_ que retorna un vertice y una distancia asociada a un punto 
-RVertice v_cercano_con_resultado(int px, int py, int pz, std::string nombre_objeto) {
+ResultadoVertice v_cercano_con_resultado(int px, int py, int pz, std::string nombre_objeto) {
     // Verificar si el objeto existe en memoria recorriendo la lista manualmente
     std::list<Objeto>::iterator itObj;
     bool objetoEncontrado = false;
@@ -1117,7 +1116,7 @@ RVertice v_cercano_con_resultado(int px, int py, int pz, std::string nombre_obje
     if (!objetoEncontrado) {
         // El objeto no fue encontrado
         std::cerr << "El objeto " << nombre_objeto << " no ha sido cargado en memoria." << std::endl;
-        return RVertice(Vertice(), 0.0); // Retornar un ResultadoVertice vacío
+        return ResultadoVertice(Vertice(), 0.0); // Retornar un ResultadoVertice vacío
     }
 
     // Crear un Kd-Tree para almacenar los vértices del objeto en 3D
@@ -1156,9 +1155,9 @@ RVertice v_cercano_con_resultado(int px, int py, int pz, std::string nombre_obje
 
         // Crear un vértice con las coordenadas del vértice más cercano
         Vertice v_cercano(vertice_cercano->punto[0], vertice_cercano->punto[1], vertice_cercano->punto[2]);
-        return RVertice(v_cercano, distancia); // Retornar el resultado
+        return ResultadoVertice(v_cercano, distancia); // Retornar el resultado
     } else {
-        return RVertice(Vertice(), 0.0); // Retornar un ResultadoVertice vacío si no se encuentra un vértice
+        return ResultadoVertice(Vertice(), 0.0); // Retornar un ResultadoVertice vacío si no se encuentra un vértice
     }
 }
 
@@ -1191,7 +1190,7 @@ void v_cercanos_caja(std::string nombreObjeto) {
 
         // Llamar a v_cercano_con_resultado y capturar el vértice cercano y la distancia
         double distancia;
-        RVertice vertice_cercano = v_cercano_con_resultado(esquina.obtenerX(), esquina.obtenerY(), esquina.obtenerZ(), nombreObjeto); 
+        ResultadoVertice vertice_cercano = v_cercano_con_resultado(esquina.obtenerX(), esquina.obtenerY(), esquina.obtenerZ(), nombreObjeto); 
         
         // Imprimir el resultado en el formato requerido
         std::cout << (i + 1) << " (" 
