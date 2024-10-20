@@ -1,4 +1,4 @@
- #include <iostream>
+  #include <iostream>
   #include <fstream>
   #include <sstream>
   #include <string>
@@ -1029,7 +1029,7 @@ void v_cercano(int px, int py, int pz, std::string nombre_objeto) {
 
     if (vertice_cercano != nullptr) {
         // Calcular la distancia euclidiana al vértice más cercano
-        double distancia;
+        double distancia = 0.0;
         for (unsigned int i = 0; i < 3; i++) {
             distancia += pow(puntoConsulta[i] - vertice_cercano->punto[i], 2);
         }
@@ -1207,16 +1207,16 @@ void v_cercanos_caja(std::string nombreObjeto) {
 }
 
 
-//void ruta_corta(Vertice i1,Vertice i2, std::string nombreObjeto) {
+void ruta_corta(Vertice i1,Vertice i2, std::string nombreObjeto) {
   // Aqui faltaria colocar la logica para encontrar el objeto y
   // cualcular el valor de la distancia (valor_distancia) que conecta los vertices
   //Implementación mensaje de exito o fracaso en dado caso que se encuentre el objeto
-  /* Verificar si los índices de los vértices son iguales
-      if (i1 == i2) {
+  //Verificar si los índices de los vértices son iguales
+      /*if (i1 == i2) {
           std::cerr<<"Los índices de los vértices dados son iguales para el objeto "<<nombreObjeto<<std::endl;
-      }*/
+      }
     //No me dejaba comparar los indices de los vertices, por lo que no se como hacerlo y deje comentariado. wazaaaaaa
-    /*if(i1==i2){//indices iguales
+    if(i1==i2){//indices iguales
         std::cout<<"Los índices de los vértices dados son iguales"<<std::endl;
     } else if(i1!=""&&i2!=""){//indices no existen
         std::cout<<"Algunos de los indices de vertices estan fuera de rango para el objeto "<<nombreObjeto<<std::endl;
@@ -1224,28 +1224,28 @@ void v_cercanos_caja(std::string nombreObjeto) {
       std::cout<<"La ruta mas corta que conecta los vertices "<<"(coordenada i1 del objeto)"<<" hasta "<<"(cordenada i2 del vertice)"<<" del objeto "<<nombreObjeto<<", pasa por:"<<"(co ordenada i1 , v1,v2,vn, i2..."<<" con una longitud de: "<<"valor_distancia"<<std::endl;
   } else {
       std::cerr<<"El objeto "<<nombreObjeto<<" no ha sido cargado en memoria."<<std::endl;
-  }
-}*/
+  }*/
+}
 
 
 
 
-/*void ruta_corta_centro(Vertice i1, std::string nombreObjeto) {
+void ruta_corta_centro(Vertice i1, std::string nombreObjeto) {
   // Aqui faltaria colocar la logica para encontrar el objeto y
   // cualcular el valor de la distancia (valor_distancia) que conecta los vertices
   //Implementación mensaje de exito o fracaso en dado caso que se encuentre el objeto
     //Verificacion si los indices estan dentro del objeto
     // dentro de un if std::cerr<<" Algunos de los índices de vértices están fuera de rango para el objeto "<<nombreObjeto<<std::endl;
     //indice fuera del rango
-  if (nombreObjeto!="") {
+ /* if (nombreObjeto!="") {
       std::cout<<"La ruta mas corta que conecta el vertice "<<"(cordenada del vertice i1)"<<" con el centro del objeto "<<nombreObjeto<<", ubicado en "<<"cordenada(ctx,cty,ctz)"<<", pasa por:"<<"cordenada i1, v1,v2,...ct"<<" con una longitud de "<<"valor_distancia"<< std::endl;
   }else if(i1.!=""){//indices no existen
       std::cout<<"El indice de vertice esta fuera de rango para el objeto "<<nombreObjeto<<std::endl;
   } else {
       std::cerr<<"El objeto "<<nombreObjeto<<" no ha sido cargado en memoria."<<std::endl;
 
-  }
-}*/
+  }*/
+}
 
 
 //////////////////////////////////FUNCIONES AUXILIARES///////////////////////////////
@@ -1354,6 +1354,9 @@ void v_cercanos_caja(std::string nombreObjeto) {
           return false;
       }
 
+      std::cout<<"Los datos del objeto son válidos"<<std::endl;
+      return true;
+  }
       std::cout<<"Los datos del objeto son válidos"<<std::endl;
       return true;
   }
