@@ -1185,7 +1185,7 @@ void v_cercanos_caja(std::string nombreObjeto) {
     std::cout << "Esquina     Vertice     Distancia\n";
 
     // Iterar sobre cada esquina y llamar a v_cercano_con_resultado
-    for (int i = 0; i < esquinas.size(); i++) {
+    for (int i = 0; i < esquinas.size(); ++i) {
         Vertice esquina = esquinas[i];
 
         // Llamar a v_cercano_con_resultado y capturar el vértice cercano y la distancia
@@ -1202,49 +1202,59 @@ void v_cercanos_caja(std::string nombreObjeto) {
                   << vertice_cercano.obtenerY() << ", " 
                   << vertice_cercano.obtenerZ() << ") "
                   << distancia << "\n";
-
     }
 }
 
-
-void ruta_corta(Vertice i1,Vertice i2, std::string nombreObjeto) {
+void ruta_corta(Vertice i1, Vertice i2, std::string nombreObjeto) {
   // Aqui faltaria colocar la logica para encontrar el objeto y
   // cualcular el valor de la distancia (valor_distancia) que conecta los vertices
+
+
+
   //Implementación mensaje de exito o fracaso en dado caso que se encuentre el objeto
-  //Verificar si los índices de los vértices son iguales
-      /*if (i1 == i2) {
+
+  /* Verificar si los índices de los vértices son iguales
+      if (i1 == i2) {
           std::cerr<<"Los índices de los vértices dados son iguales para el objeto "<<nombreObjeto<<std::endl;
-      }
+
+      }*/
+
     //No me dejaba comparar los indices de los vertices, por lo que no se como hacerlo y deje comentariado. wazaaaaaa
-    if(i1==i2){//indices iguales
+    /*if(i1==i2){//indices iguales
         std::cout<<"Los índices de los vértices dados son iguales"<<std::endl;
     } else if(i1!=""&&i2!=""){//indices no existen
         std::cout<<"Algunos de los indices de vertices estan fuera de rango para el objeto "<<nombreObjeto<<std::endl;
-    } else if (nombreObjeto!="") {
+    } else*/ if (nombreObjeto!="") {
       std::cout<<"La ruta mas corta que conecta los vertices "<<"(coordenada i1 del objeto)"<<" hasta "<<"(cordenada i2 del vertice)"<<" del objeto "<<nombreObjeto<<", pasa por:"<<"(co ordenada i1 , v1,v2,vn, i2..."<<" con una longitud de: "<<"valor_distancia"<<std::endl;
   } else {
       std::cerr<<"El objeto "<<nombreObjeto<<" no ha sido cargado en memoria."<<std::endl;
-  }*/
-}
 
+  }
+}
 
 
 
 void ruta_corta_centro(Vertice i1, std::string nombreObjeto) {
   // Aqui faltaria colocar la logica para encontrar el objeto y
   // cualcular el valor de la distancia (valor_distancia) que conecta los vertices
+
+
+
   //Implementación mensaje de exito o fracaso en dado caso que se encuentre el objeto
+
     //Verificacion si los indices estan dentro del objeto
     // dentro de un if std::cerr<<" Algunos de los índices de vértices están fuera de rango para el objeto "<<nombreObjeto<<std::endl;
+
     //indice fuera del rango
- /* if (nombreObjeto!="") {
+
+  if (nombreObjeto!="") {
       std::cout<<"La ruta mas corta que conecta el vertice "<<"(cordenada del vertice i1)"<<" con el centro del objeto "<<nombreObjeto<<", ubicado en "<<"cordenada(ctx,cty,ctz)"<<", pasa por:"<<"cordenada i1, v1,v2,...ct"<<" con una longitud de "<<"valor_distancia"<< std::endl;
-  }else if(i1.!=""){//indices no existen
+  }/*else if(i1.!=""){//indices no existen
       std::cout<<"El indice de vertice esta fuera de rango para el objeto "<<nombreObjeto<<std::endl;
-  } else {
+  }*/ else {
       std::cerr<<"El objeto "<<nombreObjeto<<" no ha sido cargado en memoria."<<std::endl;
 
-  }*/
+  }
 }
 
 
@@ -1280,24 +1290,23 @@ void ruta_corta_centro(Vertice i1, std::string nombreObjeto) {
 
   /*Función auxiliar encargada de verificar si un objeto es válido
   //para ser cargado en memoria y trabajar con este en el programa*/
- bool verificacionObjeto(std::string nombreArchivo, std::list<Objeto>& listadoObjetos){
-    
+  bool verificacionObjeto(std::string nombreArchivo, std::list<Objeto>& listadoObjetos){
       std::ifstream archivo(nombreArchivo);
-      
+
       if (!archivo.is_open()) {
-          std::cout<< "El archivo "<<nombreArchivo <<"no se pudo abrir (Desde verificación objeto)."<<std::endl;
+          std::cout<< "El archivo "<<nombreArchivo <<"no se pudo abrir (Desde verificacion objeto)."<<std::endl;
           return false;
       }
 
       std::string linea;
 
-      //Se valida que el titulo del objeto no tenga 
+      //Se valida que el titulo del objeto no tenga
       //espacios en el primer renglón
       if (!std::getline(archivo, linea)) {
-          std::cout<<"El archivo está vacio (como mi corazón)"<<std::endl;
+          std::cout<<"El archivo esta vacio (como mi corazon)"<<std::endl;
           return false;
       }
-      
+
       if (linea.find(' ') != std::string::npos) {
           std::cout<<"El nombre del objeto tiene espacios"<<std::endl;
           return false;
@@ -1305,16 +1314,16 @@ void ruta_corta_centro(Vertice i1, std::string nombreObjeto) {
 
       //Revisar que está el número de vertices
       if (!std::getline(archivo, linea)) {
-          std::cout<<"No existe el número de vertices"<<std::endl;
+          std::cout<<"No existe el numero de vertices"<<std::endl;
           return false;
       }
 
       //Se revisa que realmente se esté ingrensando un número de vertices
-      //que sea un entero positivo y que sea un número 
+      //que sea un entero positivo y que sea un número
       int numVertices;
       std::istringstream entrada(linea);
       if (!(entrada>>numVertices) || numVertices<=0) {
-          std::cout<<"El número de vertices no es un número o no es una entrada válida"<<std::endl;
+          std::cout<<"El numero de vertices no es un numero o no es una entrada valida"<<std::endl;
           return false;
       }
 
@@ -1330,7 +1339,7 @@ void ruta_corta_centro(Vertice i1, std::string nombreObjeto) {
           std::istringstream lineaVertices(linea);
           int x, y, z;
           if (!(lineaVertices>>x>>y>>z)) {
-              std::cout<<"Error: El renglón "<<i+3<<" no se tienen las coordenadas necesarias"<<std::endl;
+              std::cout<<"Error: El renglon "<<i+3<<" no se tienen las coordenadas necesarias"<<std::endl;
               return false;
           }
       }
@@ -1354,6 +1363,6 @@ void ruta_corta_centro(Vertice i1, std::string nombreObjeto) {
           return false;
       }
 
-      std::cout<<"Los datos del objeto son válidos"<<std::endl;
+      std::cout<<"Los datos del objeto son validos"<<std::endl;
       return true;
   }
