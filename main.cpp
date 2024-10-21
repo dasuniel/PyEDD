@@ -1,4 +1,4 @@
-  #include <iostream>
+#include <iostream>
   #include <fstream>
   #include <sstream>
   #include <string>
@@ -1185,11 +1185,11 @@ void v_cercanos_caja(std::string nombreObjeto) {
     std::cout << "Esquina     Vertice     Distancia\n";
 
     // Iterar sobre cada esquina y llamar a v_cercano_con_resultado
-    for (int i = 0; i < esquinas.size(); i++) {
+    for (unsigned int i = 0; i < esquinas.size(); i++) {
         Vertice esquina = esquinas[i];
 
         // Llamar a v_cercano_con_resultado y capturar el vértice cercano y la distancia
-        double distancia;
+        double distancia =0.0;
         ResultadoVertice vertice_cercano = v_cercano_con_resultado(esquina.obtenerX(), esquina.obtenerY(), esquina.obtenerZ(), nombreObjeto); 
         
         // Imprimir el resultado en el formato requerido
@@ -1354,9 +1354,6 @@ void ruta_corta_centro(Vertice i1, std::string nombreObjeto) {
           return false;
       }
 
-      std::cout<<"Los datos del objeto son válidos"<<std::endl;
-      return true;
-  }
       std::cout<<"Los datos del objeto son válidos"<<std::endl;
       return true;
   }
