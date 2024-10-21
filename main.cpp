@@ -1,4 +1,10 @@
-#include <iostream>
+/*****************************************************************************************************************************
+Fecha: 1 Agosto 2024
+Autor: Daniel Rosas, Manuel Rincon, Juan Forero, Santiago Camargo
+Tema: Proyecto Estructuras
+Estructuras de datos
+******************************************************************************************************************************/
+  #include <iostream>
   #include <fstream>
   #include <sstream>
   #include <string>
