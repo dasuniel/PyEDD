@@ -1185,11 +1185,11 @@ void v_cercanos_caja(std::string nombreObjeto) {
     std::cout << "Esquina     Vertice     Distancia\n";
 
     // Iterar sobre cada esquina y llamar a v_cercano_con_resultado
-    for (unsigned int i = 0; i < esquinas.size(); i++) {
+    for (int i = 0; i < esquinas.size(); i++) {
         Vertice esquina = esquinas[i];
 
         // Llamar a v_cercano_con_resultado y capturar el vértice cercano y la distancia
-        double distancia =0.0;
+        double distancia;
         ResultadoVertice vertice_cercano = v_cercano_con_resultado(esquina.obtenerX(), esquina.obtenerY(), esquina.obtenerZ(), nombreObjeto); 
         
         // Imprimir el resultado en el formato requerido
